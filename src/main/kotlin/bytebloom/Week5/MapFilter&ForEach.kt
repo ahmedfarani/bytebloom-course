@@ -1,4 +1,4 @@
-package bytebloom
+package bytebloom.Week5
 
 data class Player(val name: String, val level: Int, val playerClass: String, val gold: Int)
 
