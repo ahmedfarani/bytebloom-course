@@ -1,15 +1,5 @@
 package bytebloom.Week5
 
-data class Players(val name: String, val level: Int, val playerClass: String, val gold: Int)
-
-val playerss = listOf(
-    Players("Arin", 12, "Warrior", 150),
-    Players("Clara", 15, "Mage", 100),
-    Players("Ben", 11, "Rogue", 250),
-    Players("Dara", 15, "Cleric", 180),
-    Players("Erik", 9, "Warrior", 80)
-)
-
 data class PlayerWithInventory(val name: String, val items: List<String>)
 
 fun main(){
