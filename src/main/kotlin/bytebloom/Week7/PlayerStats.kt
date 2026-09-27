@@ -6,9 +6,15 @@ class PlayerStats{
     private val maxHealth = 100
     var health = 100
         private set
+    var isAlive = true
+        private set
 
     fun takeDamage(damage: Int) {
         health -= damage
+        if (health <= 0){
+            health = 0
+            isAlive = false
+        }
     }
 
     fun heal(amount: Int) {
