@@ -1,4 +1,5 @@
 import bytebloom.Week7.PlayerStats
+import com.google.common.truth.Truth.assertThat
 import org.junit.jupiter.api.Test
 
 class PlayerStatsTest {
@@ -13,6 +14,6 @@ class PlayerStatsTest {
 
         // Then: player health decreased by 30
         val expectedHealth = 70
-        assert(playerStats.health == expectedHealth)
+        assertThat(playerStats.health).isEqualTo(expectedHealth)
     }
 }
