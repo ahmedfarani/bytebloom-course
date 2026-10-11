@@ -1,4 +1,4 @@
-package bytebloom.Week8
+package bytebloom.Week8.CoroutineScopes
 
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
