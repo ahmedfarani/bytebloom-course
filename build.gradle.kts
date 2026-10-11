@@ -15,6 +15,7 @@ dependencies {
     testImplementation("io.mockk:mockk:1.14.9")
     implementation("io.insert-koin:koin-core:4.2.2")
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.11.0")
+    testImplementation("org.jetbrains.kotlinx:kotlinx-coroutines-test:1.11.0")
 }
 
 kotlin {
