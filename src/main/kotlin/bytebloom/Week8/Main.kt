@@ -1,39 +1,44 @@
 package bytebloom.Week8
 
-import kotlin.concurrent.thread
-import kotlin.system.measureTimeMillis
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.runBlocking
+import kotlin.time.Duration.Companion.milliseconds
 
 fun main() {
-    println("--> Lesson 8.01: The Need for Concurrency <--")
+    println("--> Lesson 8.02 & 8.03: Coroutines & Coroutines Scopes <--")
 
-    // --> A Blocking Operation <--
-    // Imagine this is a heavy task like a network request or reading a large file.
-    // The program STOPS and waits for it to finish.
+    println("Started a coroutine")
+    runBlocking {
+        // Coroutine Scope
 
-    val totalTime = measureTimeMillis {
-        println(fetchUserDataBlocking())
-        println(fetchUserNewBlocking())
+        val job1=launch { // Fire and Forget
+            val user = fetchUserData()
+            println("User: $user")
+        }
+
+        val job2=launch {
+            val news = fetchUserNew()
+            println("News: $news")
+        }
+
+        job1.join()
+        job2.join()
+
+        println("All inner coroutines finished!")
     }
-    println("Total time is: $totalTime")
-
-    val totalThreadsTime = measureTimeMillis {
-        val thread1 = thread { fetchUserDataBlocking() }
-        val thread2 = thread { fetchUserNewBlocking() }
-
-        thread1.join()
-        thread2.join()
-    }
-    println("Total threads time is: $totalThreadsTime")
+    println("Ended a coroutine")
 }
 
-fun fetchUserDataBlocking(): String {
+// Coroutines => cooperative routines
+suspend fun fetchUserData(): String { // suspend / resume
     println("Fetching User Data")
-    Thread.sleep(5000) // 5 Seconds
+    delay(5000.milliseconds) // 5 Seconds
     return "User Data"
 }
 
-fun fetchUserNewBlocking(): String {
+suspend fun fetchUserNew(): String {
     println("Fetching User news")
-    Thread.sleep(2000) // 2 Seconds
+    delay(2000.milliseconds) // 2 Seconds
     return "User News"
 }
