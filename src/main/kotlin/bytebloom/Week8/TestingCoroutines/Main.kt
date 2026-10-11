@@ -7,7 +7,9 @@ import kotlin.time.Duration.Companion.milliseconds
 fun main()= runBlocking {
     println("--> Lesson 8.06: Testing Coroutines <--")
 
-    UserProfileRepository().fetchProfile()
+    UserProfileRepository().fetchProfile(
+        userId = TODO()
+    )
 
 
 }
